@@ -124,7 +124,7 @@ func checkEnvoyIstioSDS(host string) error {
 		_ = typhon.NewRequest(context.Background(), "POST", fmt.Sprintf("%s/quitquitquit", host), nil).Send().Response()
 		return errors.New("envoy-preflight: Envoy Istio SDS check failed, Envoy proxy restarted")
 	} else {
-		fmt.Printf("envoy-preflight: %d certificates found in :15000/certs, OK", len(certs.Certificates))
+		fmt.Printf("envoy-preflight: %d certificates found in :15000/certs, OK ", len(certs.Certificates))
 	}
 
 	return nil
@@ -164,7 +164,7 @@ func block(host string) {
 			}
 		}
 
-		fmt.Println("envoy-preflight: envoy status is LIVE")
+		fmt.Println("envoy-preflight: envoy status is LIVE ")
 		return nil
 	}, b)
 }
