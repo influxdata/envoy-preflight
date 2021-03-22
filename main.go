@@ -122,7 +122,7 @@ func checkEnvoyIstioSDS(host string) error {
 		// Proper logging! with timestamp
 		fmt.Println("envoy-preflight: Only 1 certificate found in :15000/certs, killing envoy pod")
 		_ = typhon.NewRequest(context.Background(), "POST", fmt.Sprintf("%s/quitquitquit", host), nil).Send().Response()
-		return errors.New("Envoy Istio SDS check failed, Envoy proxy restarted")
+		return errors.New("envoy-preflight: Envoy Istio SDS check failed, Envoy proxy restarted")
 	} else {
 		fmt.Printf("envoy-preflight: %d certificates found in :15000/certs, OK", len(certs.Certificates))
 	}
@@ -152,7 +152,7 @@ func block(host string) {
 		}
 
 		if info.State != "LIVE" {
-			return errors.New("not live yet")
+			return errors.New("envoy-preflight: not live yet")
 		}
 
 		// If Enabled perform the ENVOY ISTIO SDS WARMING Check
