@@ -102,9 +102,8 @@ func main() {
 	os.Exit(exitCode)
 }
 
-// Check status of SDS secrets from Istio to make sure SDS bootstrap was successful
-// This SDS data is populated at bootstrap Before the actual xDS connections are established so it should be safe to
-// just kill the envoy pod qith `quitquitquit` if we are in a bad state here
+// Check status of SDS secrets from Istio to make sure SDS bootstrap was successful.
+// This data is populated at bootstrap before the actual xDS connections are established so it should be safe to just kill the envoy pod qith `quitquitquit` if the state is not good here.
 func checkEnvoyIstioSDS(host string) error {
 	url := fmt.Sprintf("%s/certs", host)
 

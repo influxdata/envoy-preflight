@@ -24,6 +24,7 @@ When the application exits, as long as it does so with exit code 0, `envoy-prefl
 | `NEVER_KILL_ENVOY`    | If provided and set to `true`, `envoy-preflight` will not instruct envoy to exit under any circumstances.                                                                                                                                                                                                                                |
 | `ALWAYS_KILL_ENVOY`   | If provided and set to `true`, `envoy-preflight` will instruct envoy to exit, even if the main application exits with a nonzero exit code.                                                                                                                                                                                               |
 | `START_WITHOUT_ENVOY` | If provided and set to `true`, `envoy-preflight` will not wait for envoy to be LIVE before starting the main application. However, it will still instruct envoy to exit.                                                                                                                                                                 |
+| `ENVOY_ISTIO_SDS_WARMING_PROTECTION` | If provided and set to `true`, `envoy-preflight` will perform a check on the number of certificates in store|
 
 ### Istio Envoy SDS Protection
 
@@ -37,4 +38,4 @@ ROOTCA                           WARMING     false
 default           Cert Chain     ACTIVE      true           234412263908381152207233144365276643559     2021-03-19T03:14:59Z     2021-03-18T03:14:59Z
 ```
 
-when the environment variable `ENVOY_ISTIO_SDS_WARMING_PROTECTION` is set to `true` an extra check is perfomed after the default state one , if there are `< 2` certificates in the certs store the envoy proxy is killed with `/quitquitquit` and rebootstrapped
+when the environment variable `ENVOY_ISTIO_SDS_WARMING_PROTECTION` is set to `true` an extra check is performed after the default state one , if there are `< 2` certificates in the certs store the envoy proxy is killed with `/quitquitquit` and rebootstrapped
