@@ -22,13 +22,13 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 1
-        path: go/src/github.com/primeroz/envoy-preflight
+        path: go/src/github.com/influxdata/envoy-preflight
         
     - name: Create bin
       run: mkdir -p ${{ github.workspace }}/go/bin
 
     - name: Get dependencies
-      working-directory: go/src/github.com/primeroz/envoy-preflight
+      working-directory: go/src/github.com/influxdata/envoy-preflight
       env:
         GOPATH: ${{ github.workspace	}}/go
       run: |
@@ -39,7 +39,7 @@ jobs:
         fi
 
     - name: Build
-      working-directory: go/src/github.com/primeroz/envoy-preflight
+      working-directory: go/src/github.com/influxdata/envoy-preflight
       env:
         GOPATH: ${{ github.workspace }}/go
       run: go build -v .
